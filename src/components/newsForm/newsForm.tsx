@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+import {newsType} from "../../App.tsx";
 
 import s from './newsForm.module.scss';
 
-export const NewsForm = ({ news, setNews }) => {
+type propsType = {
+    news: Array<newsType>;
+    setNews: (news: Array<newsType>) => void;
+}
+
+export const NewsForm = ({ news, setNews }: propsType) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 

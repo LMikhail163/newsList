@@ -1,15 +1,20 @@
-import React from 'react';
+import {newsType} from "../../App.tsx";
 
 import s from './newsList.module.scss';
 
-export const NewsList = ({ news, setNews }) => {
-    const deleteNews = (id) => {
+type propsType = {
+    news: Array<newsType>;
+    setNews: (news: Array<newsType>) => void;
+}
+
+export const NewsList = ({ news, setNews }: propsType) => {
+    const deleteNews = (id: number) => {
         const updatedNews = news.filter(item => item.id !== id);
         setNews(updatedNews);
         localStorage.setItem('news', JSON.stringify(updatedNews));
     };
 
-    const updateNews = (item) => {
+    const updateNews = (item: newsType) => {
         const newTitle = prompt('New title:', item.title) || item.title;
         const newContent = prompt('New content:', item.content) || item.content;
 

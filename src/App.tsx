@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {NewsList} from './components/newsList/newsList.tsx';
 import {NewsForm} from "./components/newsForm/newsForm.tsx";
 
 import './App.css'
 
+export type newsType = {
+    id: number;
+    title: string;
+    content: string;
+}
+
 function App() {
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState<newsType[]>([]);
 
   useEffect(() => {
     const storedNews = JSON.parse(localStorage.getItem('news') || '[]');
